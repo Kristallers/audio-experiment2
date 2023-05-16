@@ -12,6 +12,7 @@
     "vite": "^4.3.2"
   },
   "dependencies": {
+    "gsap": "^3.11.5",
     "web-audio-beat-detector": "^8.1.46"
   }
 }

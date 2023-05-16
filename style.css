@@ -44,6 +44,19 @@ h1 {
 	display: flex;
 }
 
+.beat-container {
+	margin: 6rem;
+	display: flex;
+	justify-content: center;
+}
+
+#beatCircle {
+	height: 5rem;
+	width: 5rem;
+	border-radius: 10rem;
+	background-color: #f9f9f9;
+}
+
 button {
 	border-radius: 8px;
 	border: 1px solid transparent;
