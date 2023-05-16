@@ -3,7 +3,9 @@ import { setupCounter } from "./counter.js";
 import { analyze, guess } from "web-audio-beat-detector";
 
 document.querySelector("#app").innerHTML = `
-  <div>hello (:</div>
+	<h1>you're the alpha, bitch</h1>  
+	<button id="analyzeButton">analyze</button>
+	<button id="playButton">play</button>
 `;
 
 const ctx = new AudioContext();
@@ -48,17 +50,29 @@ const playback = () => {
 	playSound.buffer = audio;
 	playSound.connect(ctx.destination);
 	playSound.start(ctx.currentTime);
+
+	const alphaBeatsContainer = document.querySelector("#alphaBeats");
+	setInterval(() => {
+		const alphaBeatCounter = document.createElement("p");
+		alphaBeatCounter.innerHTML = `Beat`;
+		alphaBeatsContainer.appendChild(alphaBeatCounter);
+	}, 566);
 };
 
 const analyzeSong = () => {
-	analyze(audioBuffer)
-		.then((tempo) => {
-			console.log(tempo);
+	guess(audioBuffer)
+		.then(({ bpm, offset, tempo }) => {
+			console.log("bpm", bpm);
+			console.log("offset", offset);
+			console.log("tempo", tempo);
 		})
 		.catch((err) => {
 			console.log("audio could not be analyzed", err);
 		});
 };
 
+const analyzeButton = document.getElementById("analyzeButton");
+analyzeButton.addEventListener("click", analyzeSong);
+
 const playButton = document.getElementById("playButton");
-playButton.addEventListener("click", analyzeSong);
+playButton.addEventListener("click", playback);
