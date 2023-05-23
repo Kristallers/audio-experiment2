@@ -1,5 +1,4 @@
 import "./style.css";
-import { setupCounter } from "./counter.js";
 import { analyze, guess } from "web-audio-beat-detector";
 import { gsap } from "gsap";
 
@@ -54,9 +53,9 @@ const playback = () => {
 
 	const alphaBeatsContainer = document.querySelector("#alphaBeats");
 	setInterval(() => {
-		// const alphaBeatCounter = document.createElement("p");
-		// alphaBeatCounter.innerHTML = `Beat`;
-		// alphaBeatsContainer.appendChild(alphaBeatCounter);
+		const alphaBeatCounter = document.createElement("p");
+		alphaBeatCounter.innerHTML = `Beat`;
+		alphaBeatsContainer.appendChild(alphaBeatCounter);
 		var tl = gsap.timeline();
 		tl.to("#beatCircle", { scale: 2, repeat: -1 });
 	}, 566);
